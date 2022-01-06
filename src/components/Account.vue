@@ -97,6 +97,7 @@
                                         </v-row>
                                         <v-row>
                                             <v-text-field
+                                            type="number"
                                             v-model="editedItem.phone"
                                             label="Phone Number"
                                             outlined
@@ -105,7 +106,7 @@
                                         <v-row>
                                             <v-text-field
                                             v-model="editedItem.email"
-                                            label="email"
+                                            label="Email"
                                             outlined
                                             ></v-text-field>
                                         </v-row>
@@ -117,11 +118,12 @@
                                             ></v-text-field>
                                         </v-row>
                                         <v-row>
-                                            <v-text-field
-                                            v-model="editedItem.status"
+                                          <v-select
+                                            :items="status"
+                                            v-model="editedItem.statsymbol"
                                             label="Status"
-                                            outlined
-                                            ></v-text-field>
+                                            outlined>
+                                          </v-select>
                                         </v-row>
                                     </v-container>
                                     </v-card-text>
@@ -191,6 +193,7 @@
 <script>
   export default {
     data: () => ({
+      status:["Active", "Disable"],
       sortDesc: false,
       sortBy: 'username',
       dialog: false,
@@ -210,7 +213,7 @@
         { text: 'Phone Number', value: 'phone' },
         { text: 'Email', value: 'email' },
         { text: 'Password', value: 'password' },
-        { text: 'Status', value: 'status' },
+        { text: 'Status', value: 'statsymbol' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       users: [],
@@ -250,7 +253,8 @@
     },
 
     created () {
-      this.initialize()
+      this.initialize();
+      this.convert();
     },
 
     methods: {
@@ -330,6 +334,11 @@
       },
 
       editItem (item) {
+        if(this.editedItem.statsymbol=="Disable"){
+          this.editedItem.status=0;
+        }else if(this.editedItem.statsymbol=="Active"){
+          this.editedItem.status=1;
+        }
         this.editedIndex = this.users.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
@@ -363,12 +372,27 @@
       },
 
       save () {
+        if(this.editedItem.statsymbol=="Disable"){
+          this.editedItem.status=0;
+        }else if(this.editedItem.statsymbol=="Active"){
+          this.editedItem.status=1;
+        }
         if (this.editedIndex > -1) {
           Object.assign(this.users[this.editedIndex], this.editedItem)
         } else {
           this.users.push(this.editedItem)
         }
         this.close()
+      },
+
+      convert(){
+        for(var i=0; i<this.users.length; i++){
+          if(this.users[i].status==0){
+            this.users[i].statsymbol='Disable';
+          }else{
+            this.users[i].statsymbol='Active';
+          }
+        }
       },
     },
   }
