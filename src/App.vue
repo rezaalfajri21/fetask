@@ -19,6 +19,7 @@ export default {
   name: 'App',
   components: {
       Side, AppBar
+      
     },
 
   data(){
