@@ -46,7 +46,10 @@
                 }
                 )
             }
-    }
+    },
+    created () {
+      document.title = "Application";
+    },
     }
 </script>
 

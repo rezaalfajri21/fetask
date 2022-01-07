@@ -272,6 +272,7 @@
     },
 
     created () {
+      document.title = "Account";
       this.initialize();
       this.convert();
     },

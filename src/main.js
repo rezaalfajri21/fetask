@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import Iconly from "vue-iconly";
+import VueHorizontal from 'vue-horizontal';
+
+Vue.use(VueHorizontal);
 
 Vue.use(Iconly);
 

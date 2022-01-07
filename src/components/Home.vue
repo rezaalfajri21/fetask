@@ -44,11 +44,12 @@
             <v-container fluid>
                 <h1>Dashboard</h1>  
                 <br>
-                <v-row>
+                <div>
+                    <vue-horizontal>
                     <v-col cols="12" sm="2" v-for="card in cards"
                             :key="card.title">
                             <v-hover v-slot="{ hover }" open-delay="200">
-                            <v-card :elevation="hover ? 16 : 2">
+                            <v-card width="220" :elevation="hover ? 16 : 2">
                                 <v-row>
                                     <v-col cols="12" sm="12">
                                     <v-list-item>
@@ -69,7 +70,9 @@
                             </v-card>
                             </v-hover>
                     </v-col>
-                </v-row>
+                    </vue-horizontal>
+                </div>
+                <br>
                 <v-row>
                     <v-col cols="12" sm="9">
                     <v-card>
@@ -240,7 +243,7 @@ export default {
       cards: [
             { title: 'All Candidate', total: '120', icon: 'mdi-account-multiple-outline',  },
             { title: 'New Candidate', total: '40', icon: 'mdi-account',  },
-            { title: 'OnProgress', total: '25', icon: 'mdi-chart-line-variant',  },
+            { title: 'On Progress', total: '25', icon: 'mdi-chart-line-variant',  },
             { title: 'Pending', total: '47', icon: 'mdi-alert',  },
             { title: 'Not Met', total: '15', icon: 'mdi-close-box',  },
             { title: 'Completed', total: '92', icon: 'mdi-checkbox-outline',  },
@@ -269,12 +272,16 @@ export default {
       padding: 8,
       radius: 10,
       value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+      value2: [3, 5,2, 10, 7, 4, 9, 2, 1, 5, 8, 4, 3, 10, 2],
       width: 2,
       lineCap: 'round',
       type: 'trend',
       autoLineWidth: false,
       fills: false,
-  })
+  }),
+  created () {
+      document.title = "Dashboard";
+    },
 }
 </script>
 <style lang="sass" scoped>

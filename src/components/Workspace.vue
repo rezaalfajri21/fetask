@@ -99,6 +99,7 @@
                             <v-img
                                 height="150"
                                 :src="card.src"
+                                
                             >
                         
                             </v-img>
@@ -221,7 +222,8 @@
             
         },
         created () {
-            this.initialize()
+            document.title = "Workspace";
+            this.initialize();
         },
         computed: {
             formTitle () {

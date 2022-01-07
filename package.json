@@ -10,9 +10,11 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11",
+    "horizontal": "^0.2.2",
+    "vue": "^2.6.14",
     "vue-axios": "^3.4.0",
     "vue-google-charts": "^0.3.3",
+    "vue-horizontal": "^0.8.12",
     "vue-iconly": "^1.0.2",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.0",

@@ -84,7 +84,7 @@ export default {
   name: 'login',
   created () {
     localStorage.removeItem('TOKEN');
-    document.title = "Login";
+    document.title = "Seeker";
     
   },
   data (){
@@ -116,7 +116,8 @@ export default {
     clear() {
       this.$refs.form.reset() //Clear form login
     },
-  }
+  },
+  
 }
 </script>
 
