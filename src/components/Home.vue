@@ -99,6 +99,7 @@
                                 :data="chartData"
                                 :options="chartOptions"
                                 :resizeDebounce="700"
+                                :size="500"
                             />
                         </v-card>
                     </v-col>
@@ -253,10 +254,10 @@ export default {
             { role: 'Data Analyst', value: 100, },
         ],
       chartData: [
-        ['Year', 'Sales', 'Expenses', 'Profit'],
-        ['2014', 1000, 400, 200],
-        ['2015', 1170, 460, 250],
-        ['2016', 660, 1120, 300],
+        ['Year', 'Sales'],
+        ['2014', 30, ],
+        ['2015', 50, ],
+        ['2016', 20, ],
       ],
       chartOptions: {
         chart: {
