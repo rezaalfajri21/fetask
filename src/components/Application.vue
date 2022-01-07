@@ -1,7 +1,8 @@
 <template>
     <v-app>
         <v-main>
-            <input type="file" accept="image/*" @change="uploadImage($event)" id="file-input">
+            This is application page.
+            <!-- <input type="file" accept="image/*" @change="uploadImage($event)" id="file-input"> -->
         </v-main>
     </v-app>
 </template>

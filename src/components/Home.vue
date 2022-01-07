@@ -144,91 +144,80 @@
                 <v-row>
                     <v-col cols="12" sm="12">
                         <v-card>
+                            <div style="text-align:right">
+                                <v-btn text>
+                                    <v-icon>mdi-dots-vertical</v-icon>
+                                </v-btn>
+                            </div>
                             <v-row>
                                 <v-col cols="12" sm="8" class="border">
                                     <v-list-item>
                                     <v-list-item-content>
                                         <div class="mb-4">Need vs Met</div>
-                                        <v-row>
+                                        <v-row v-for="job in jobs"
+                                            :key="job.role">
                                             <v-col cols="12" sm="3">
                                                 <v-progress-circular
                                                 rotate="360"
                                                 size="150"
                                                 width="15"
-                                                value="50"
+                                                :value="job.value"
                                                 color="indigo darken-4"
                                                 style="text-align:center"
                                                 >
-                                                50%
+                                                {{job.value}} %
                                                 <br>
-                                                Backend
+                                                {{job.role}}
                                                 </v-progress-circular>
                                             </v-col>
-                                            <v-col cols="12" sm="3">
-                                                <v-progress-circular
-                                                rotate="360"
-                                                size="150"
-                                                width="15"
-                                                value="25"
-                                                color="indigo darken-4"
-                                                style="text-align:center"
-                                                >
-                                                25%
-                                                <br>
-                                                Marketing
-                                                </v-progress-circular>
-                                            </v-col>
-                                            <v-col cols="12" sm="3">
-                                                <v-progress-circular
-                                                rotate="360"
-                                                size="150"
-                                                width="15"
-                                                value="75"
-                                                color="indigo darken-4"
-                                                style="text-align:center"
-                                                >
-                                                75%
-                                                <br>
-                                                Frontend
-                                                </v-progress-circular>
-                                            </v-col>
-                                            <v-col cols="12" sm="3">
-                                                <v-progress-circular
-                                                rotate="360"
-                                                size="150"
-                                                width="15"
-                                                value="100"
-                                                color="indigo darken-4"
-                                                style="text-align:center"
-                                                >
-                                                100%
-                                                <br>
-                                                Data Analyst
-                                                </v-progress-circular>
-                                            </v-col>
+                                            
                                         </v-row>
                                     </v-list-item-content>
                                     </v-list-item>
                                 </v-col>
                                 <v-sol cols="12" sm="4" >
-                                    <v-list-item>
-                                    <v-list-item-content>
-                                        <div style="text-align:right">Your Portfolio</div>
-                                        <v-row>
-                                            <v-col cols="12" sm="12">
-                                                <v-progress-circular
-                                                rotate="360"
-                                                size="100"
-                                                width="15"
-                                                value="70"
-                                                color="teal"
-                                                >
-                                                70%
-                                                </v-progress-circular>
-                                            </v-col>
-                                        </v-row>
-                                    </v-list-item-content>
-                                    </v-list-item>
+                                    <div container>
+                                        <v-list-item>
+                                            <v-list-item-content>
+                                                <v-row>
+                                                    <v-col cols="12" sm="6">
+                                                        <v-btn class="icon" fab height="100" width="100" elevation="0">
+                                                            <v-icon size="50" color="white" >mdi-briefcase</v-icon>
+                                                        </v-btn>
+                                                        
+                                                        <!-- <v-progress-circular
+                                                        rotate="360"
+                                                        size="100"
+                                                        width="15"
+                                                        value="70"
+                                                        color="teal"
+                                                        >
+                                                        70%
+                                                        </v-progress-circular> -->
+                                                    </v-col>
+                                                    <v-col cols="12" sm="6">
+                                                        Opening Job
+                                                        <h1>120</h1>
+                                                    </v-col>
+                                                </v-row>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                        <v-list-item>
+                                            <v-list-item-content>
+                                                <v-row>
+                                                    <v-col cols="12" sm="6">
+                                                        <v-btn class="icon" fab height="100" width="100" elevation="0">
+                                                            <v-icon size="50" color="white" >mdi-briefcase</v-icon>
+                                                        </v-btn>
+                                                    </v-col>
+                                                    <v-col cols="12" sm="6">
+                                                        Work Candidate Average
+                                                        <h1>1 Years</h1>
+                                                    </v-col>
+                                                </v-row>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                    </div>
                                 </v-sol>
                             </v-row>
                         </v-card>
@@ -257,12 +246,17 @@ export default {
             { title: 'Not Met', total: '15', icon: 'mdi-close-box',  },
             { title: 'Completed', total: '92', icon: 'mdi-checkbox-outline',  },
         ],
+    jobs: [
+            { role: 'Backend', value: 50, },
+            { role: 'Marketing', value: 25, },
+            { role: 'Frontend', value: 75, },
+            { role: 'Data Analyst', value: 100, },
+        ],
       chartData: [
         ['Year', 'Sales', 'Expenses', 'Profit'],
         ['2014', 1000, 400, 200],
         ['2015', 1170, 460, 250],
         ['2016', 660, 1120, 300],
-        ['2017', 1030, 540, 350]
       ],
       chartOptions: {
         chart: {
