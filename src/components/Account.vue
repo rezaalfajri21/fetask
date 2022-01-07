@@ -1,6 +1,8 @@
 <template>
     <v-app>
         <v-main>
+          <v-container fluid>
+            <h1>Account Management</h1>
             <div class="projects mt-4">
                 <v-card max-width="1600" class="ml-9 mr-9 rounded-lg mb-9" elevation="0" outlined>
                     
@@ -26,9 +28,11 @@
                                 <v-text-field
                                     v-model="search"
                                     append-icon="mdi-magnify"
-                                    label="Search"
+                                    label="Search Name"
                                     single-line
                                     hide-details
+                                    outlined
+                                    dense
                                 ></v-text-field>
                                 <v-spacer></v-spacer>
                                 <!-- <v-select
@@ -46,20 +50,24 @@
                                   mandatory
                                 >
                                   <v-btn
-                                    large
+                                    class="ma-2"
+                                    outlined
+                                    color="indigo"
                                     depressed
-                                    color="blue"
                                     :value="false"
                                   >
                                     <v-icon>mdi-arrow-up</v-icon>
+                                    Ascending
                                   </v-btn>
                                   <v-btn
-                                    large
+                                    class="ma-2"
+                                    outlined
+                                    color="indigo"
                                     depressed
-                                    color="blue"
                                     :value="true"
                                   >
                                     <v-icon>mdi-arrow-down</v-icon>
+                                    Descending
                                   </v-btn>
                                 </v-btn-toggle>
                                 <v-spacer></v-spacer>
@@ -68,15 +76,16 @@
                                 max-width="500px"
                                 >
 
-                                <template v-slot:activator="{ on, attrs }">
+                                <template v-slot:activator="{ on, attrs }" style="align:right">
                                     <v-btn
-                                    color="primary"
-                                    dark
-                                    class="mb-2"
-                                    v-bind="attrs"
-                                    v-on="on"
+                                      class="ma-2"
+                                      outlined
+                                      color="indigo"
+                                      v-bind="attrs"
+                                      v-on="on"
                                     >
-                                    New Item
+                                    <v-icon>mdi-account-group</v-icon>
+                                    Create Account
                                     </v-btn>
                                 </template>
                                 <v-card>
@@ -186,6 +195,7 @@
                         </v-data-table>
                     </v-card>
             </div>
+          </v-container>
         </v-main>
     </v-app>
 </template>
@@ -236,7 +246,7 @@
 
     computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+        return this.editedIndex === -1 ? 'Create Account' : 'Edit Account'
       },
       filteredKeys () {
         return this.keys.filter(key => key !== 'Name')

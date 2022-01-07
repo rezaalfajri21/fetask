@@ -90,11 +90,11 @@ export default {
         drawer: null,
         items: [
             {icon: 'mdi-home-outline', text: 'Dashboard', route: '/home'},
-            {icon: 'mdi-shape-outline', text: 'Category', route: '/category'},
+            {icon: 'mdi-shape-outline', text: 'Application', route: '/application'},
             {icon: 'mdi-bookmark-minus-outline', text: 'Workspace', route: '/workspace'},
             {icon: 'mdi-account-outline', text: 'Account', route: '/account'},
             // {icon: 'fas fa-cog', text: 'Tools', route: '/tools'},
-        ]
+        ],
         })
 }
 </script>

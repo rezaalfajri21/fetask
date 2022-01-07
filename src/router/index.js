@@ -29,9 +29,9 @@ const routes = [
     component: importComponent('Account'),
   },
   {
-    path: '/category',
-    name: 'Category',
-    component: importComponent('Category'),
+    path: '/application',
+    name: 'Application',
+    component: importComponent('Application'),
   },
 ]
 

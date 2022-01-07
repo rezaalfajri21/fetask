@@ -2,16 +2,18 @@
     <v-app>
         <v-main>
             <v-container fluid>
+                <h1>Workspace</h1>
                 <v-dialog v-model="dialog">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
-                            color="primary"
-                            dark
-                            class="mb-2"
+                            class="ma-2"
+                            outlined
+                            color="indigo"
                             v-bind="attrs"
                             v-on="on"
                         >
-                            New Item
+                        <v-icon>mdi-briefcase-outline</v-icon>
+                            Create Workspace
                         </v-btn>
                     </template>
                     <v-card>

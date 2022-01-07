@@ -41,7 +41,9 @@
             </v-badge>
             </v-toolbar>
             <v-divider></v-divider> -->
-            <v-container class="mt-5">
+            <v-container fluid>
+                <h1>Dashboard</h1>  
+                <br>
             <v-row>
                 <v-col cols="12" sm="2">
                 <v-hover v-slot="{ hover }" open-delay="200">
