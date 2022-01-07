@@ -44,179 +44,65 @@
             <v-container fluid>
                 <h1>Dashboard</h1>  
                 <br>
-            <v-row>
-                <v-col cols="12" sm="2">
-                <v-hover v-slot="{ hover }" open-delay="200">
-                    <v-card :elevation="hover ? 16 : 2">
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                        <v-list-item>
-                            <v-list-item-content>
-                            <div style="text-align:right">
-                                <v-btn class="icon" fab width="24" height="24" elevation="0">
-                                <v-icon size="16" color="white">mdi-account-multiple-outline</v-icon>
-                                </v-btn>
-                            </div>
-                            <v-list-item-subtitle >All Candidate</v-list-item-subtitle>
-                             <v-list-item-title class="headline mb-1 ">
-                                120
-                            </v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                        </v-col>
-                    </v-row>
+                <v-row>
+                    <v-col cols="12" sm="2" v-for="card in cards"
+                            :key="card.title">
+                            <v-hover v-slot="{ hover }" open-delay="200">
+                            <v-card :elevation="hover ? 16 : 2">
+                                <v-row>
+                                    <v-col cols="12" sm="12">
+                                    <v-list-item>
+                                        <v-list-item-content>
+                                        <div style="text-align:right">
+                                            <v-btn class="icon" fab width="24" height="24" elevation="0">
+                                            <v-icon size="16" color="white" v-text="card.icon"></v-icon>
+                                            </v-btn>
+                                        </div>
+                                        <v-list-item-subtitle v-text="card.title" ></v-list-item-subtitle>
+                                        <v-list-item-title v-text="card.total" class="headline mb-1 ">
+                                            
+                                        </v-list-item-title>
+                                        </v-list-item-content>
+                                    </v-list-item>
+                                    </v-col>
+                                </v-row>
+                            </v-card>
+                            </v-hover>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12" sm="9">
+                    <v-card>
+                        <v-app-bar flat color="rgba(0,0,0,0)">
+                        <v-toolbar-title class="title black--text pl-0 ml-2">
+                            Candidate Overview 
+                        </v-toolbar-title>
+                        <v-spacer></v-spacer>
+                        <v-btn color="deep-purple" class="white--text mr-2">Weekly</v-btn>
+                        <v-btn color="deep-purple lighten-4" class="deep-purple--text ">Monthly</v-btn>
+                        </v-app-bar>
+                        <v-sparkline
+                            :fill="fill"
+                            :line-width="width"
+                            :padding="padding"
+                            :smooth="radius || false"
+                            :value="value"
+                            auto-draw
+                            color="deep-purple">
+                        </v-sparkline>
                     </v-card>
-                </v-hover>
-                </v-col>
-                <v-col cols="12" sm="2">
-                <v-hover v-slot="{ hover }" open-delay="200">
-                    <v-card :elevation="hover ? 16 : 2">
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                        <v-list-item three-line>
-                            <v-list-item-content>
-                            <div style="text-align:right">
-                                <v-btn class="icon" fab width="24" height="24" elevation="0">
-                                <v-icon size="16" color="white" >mdi-account</v-icon>
-                                </v-btn>
-                            </div>
-                            <v-list-item-subtitle >New Candidate</v-list-item-subtitle>
-                            <v-list-item-title class="headline mb-1 ">
-                                40
-                            </v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                        </v-col>
-                    </v-row>
-                    </v-card>
-                </v-hover>
-                </v-col>
-                <v-col cols="12" sm="2">
-                <v-hover v-slot="{ hover }" open-delay="200">
-                    <v-card :elevation="hover ? 16 : 2">
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                        <v-list-item three-line>
-                            <v-list-item-content>
-                            <div style="text-align:right">
-                                <v-btn class="icon" fab width="24" height="24" elevation="0">
-                                <v-icon size="16" color="white" >mdi-chart-line-variant</v-icon>
-                                </v-btn>
-                            </div>
-                            <v-list-item-subtitle >On Progress</v-list-item-subtitle>
-                            <v-list-item-title class="headline mb-1 ">
-                                25
-                            </v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                        </v-col>
-                    </v-row>
-                    </v-card>
-                </v-hover>
-                </v-col>
-                <v-col cols="12" sm="2">
-                <v-hover v-slot="{ hover }" open-delay="200">
-                    <v-card :elevation="hover ? 16 : 2">
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                        <v-list-item three-line>
-                            <v-list-item-content>
-                            <div style="text-align:right">
-                                <v-btn class="icon" fab width="24" height="24" elevation="0">
-                                <v-icon size="16" color="white" >mdi-alert</v-icon>
-                                </v-btn>
-                            </div>
-                            <v-list-item-subtitle >Pending</v-list-item-subtitle>
-                            <v-list-item-title class="headline mb-1 ">
-                                47
-                            </v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                        </v-col>
-                    </v-row>
-                    </v-card>
-                </v-hover>
-                </v-col>
-                <v-col cols="12" sm="2">
-                <v-hover v-slot="{ hover }" open-delay="200">
-                    <v-card :elevation="hover ? 16 : 2">
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                        <v-list-item three-line>
-                            <v-list-item-content>
-                            <div style="text-align:right">
-                                <v-btn class="icon" fab width="24" height="24" elevation="0">
-                                <v-icon size="16" color="white" >mdi-close-box</v-icon>
-                                </v-btn>
-                            </div>
-                            <v-list-item-subtitle >Not Met</v-list-item-subtitle>
-                            <v-list-item-title class="headline mb-1 ">
-                                15
-                            </v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                        </v-col>
-                    </v-row>
-                    </v-card>
-                </v-hover>
-                </v-col>
-                <v-col cols="12" sm="2">
-               <v-hover v-slot="{ hover }" open-delay="200">
-                    <v-card :elevation="hover ? 16 : 2">
-                    <v-row>
-                        <v-col cols="12" sm="12">
-                        <v-list-item three-line>
-                            <v-list-item-content>
-                            <div style="text-align:right">
-                                <v-btn class="icon" fab width="24" height="24" elevation="0">
-                                <v-icon size="16" color="white" >mdi-checkbox-outline</v-icon>
-                                </v-btn>
-                            </div>
-                            <v-list-item-subtitle >Completed</v-list-item-subtitle>
-                            <v-list-item-title class="headline mb-1 ">
-                                92
-                            </v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                        </v-col>
-                    </v-row>
-                    </v-card>
-                </v-hover>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col cols="12" sm="9">
-                <v-card>
-                    <v-app-bar flat color="rgba(0,0,0,0)">
-                    <v-toolbar-title class="title black--text pl-0 ml-2">
-                        Impression 
-                    </v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-btn color="deep-purple" class="white--text mr-2">Weekly</v-btn>
-                    <v-btn color="deep-purple lighten-4" class="deep-purple--text ">Monthly</v-btn>
-                    </v-app-bar>
-                    <v-sparkline
-                    :fill="fill"
-                    :line-width="width"
-                    :padding="padding"
-                    :smooth="radius || false"
-                    :value="value"
-                    auto-draw
-                    color="deep-purple"></v-sparkline>
-                </v-card>
-                </v-col>
-                <v-col cols="12" sm="3">
-                <v-card>
-                    <GChart
-                        type="PieChart"
-                        :data="chartData"
-                        :options="chartOptions"
-                        :resizeDebounce="700"
-                    />
-                
-                </v-card>
-                </v-col>
-            </v-row>
+                    </v-col>
+                    <v-col cols="12" sm="3">
+                        <v-card>
+                            <GChart
+                                type="PieChart"
+                                :data="chartData"
+                                :options="chartOptions"
+                                :resizeDebounce="700"
+                            />
+                        </v-card>
+                    </v-col>
+                </v-row>
                 <!-- <v-col cols="12" sm="6">
                 <v-card height="180px">
                     <v-row>
@@ -255,100 +141,99 @@
                     </v-row>
                 </v-card>
                 </v-col> -->
-            <v-row>
-                <v-col cols="12" sm="12">
-                <v-card>
-                    <v-row>
-                    <v-col cols="12" sm="8" class="border">
-                        <v-list-item>
-                        <v-list-item-content>
-                            <div class="mb-4">Need vs Met</div>
+                <v-row>
+                    <v-col cols="12" sm="12">
+                        <v-card>
                             <v-row>
-                            <v-col cols="12" sm="3">
-                                <v-progress-circular
-                                rotate="360"
-                                size="150"
-                                width="15"
-                                value="50"
-                                color="indigo darken-4"
-                                style="text-align:center"
-                                >
-                                50%
-                                <br>
-                                Backend
-                                </v-progress-circular>
-                            </v-col>
-                            <v-col cols="12" sm="3">
-                                <v-progress-circular
-                                rotate="360"
-                                size="150"
-                                width="15"
-                                value="25"
-                                color="indigo darken-4"
-                                style="text-align:center"
-                                >
-                                25%
-                                <br>
-                                Marketing
-                                </v-progress-circular>
-                            </v-col>
-                            <v-col cols="12" sm="3">
-                                <v-progress-circular
-                                rotate="360"
-                                size="150"
-                                width="15"
-                                value="75"
-                                color="indigo darken-4"
-                                style="text-align:center"
-                                >
-                                75%
-                                <br>
-                                Frontend
-                                </v-progress-circular>
-                            </v-col>
-                            <v-col cols="12" sm="3">
-                                <v-progress-circular
-                                rotate="360"
-                                size="150"
-                                width="15"
-                                value="100"
-                                color="indigo darken-4"
-                                style="text-align:center"
-                                >
-                                100%
-                                <br>
-                                Data Analyst
-                                </v-progress-circular>
-                            </v-col>
+                                <v-col cols="12" sm="8" class="border">
+                                    <v-list-item>
+                                    <v-list-item-content>
+                                        <div class="mb-4">Need vs Met</div>
+                                        <v-row>
+                                            <v-col cols="12" sm="3">
+                                                <v-progress-circular
+                                                rotate="360"
+                                                size="150"
+                                                width="15"
+                                                value="50"
+                                                color="indigo darken-4"
+                                                style="text-align:center"
+                                                >
+                                                50%
+                                                <br>
+                                                Backend
+                                                </v-progress-circular>
+                                            </v-col>
+                                            <v-col cols="12" sm="3">
+                                                <v-progress-circular
+                                                rotate="360"
+                                                size="150"
+                                                width="15"
+                                                value="25"
+                                                color="indigo darken-4"
+                                                style="text-align:center"
+                                                >
+                                                25%
+                                                <br>
+                                                Marketing
+                                                </v-progress-circular>
+                                            </v-col>
+                                            <v-col cols="12" sm="3">
+                                                <v-progress-circular
+                                                rotate="360"
+                                                size="150"
+                                                width="15"
+                                                value="75"
+                                                color="indigo darken-4"
+                                                style="text-align:center"
+                                                >
+                                                75%
+                                                <br>
+                                                Frontend
+                                                </v-progress-circular>
+                                            </v-col>
+                                            <v-col cols="12" sm="3">
+                                                <v-progress-circular
+                                                rotate="360"
+                                                size="150"
+                                                width="15"
+                                                value="100"
+                                                color="indigo darken-4"
+                                                style="text-align:center"
+                                                >
+                                                100%
+                                                <br>
+                                                Data Analyst
+                                                </v-progress-circular>
+                                            </v-col>
+                                        </v-row>
+                                    </v-list-item-content>
+                                    </v-list-item>
+                                </v-col>
+                                <v-sol cols="12" sm="4" >
+                                    <v-list-item>
+                                    <v-list-item-content>
+                                        <div style="text-align:right">Your Portfolio</div>
+                                        <v-row>
+                                            <v-col cols="12" sm="12">
+                                                <v-progress-circular
+                                                rotate="360"
+                                                size="100"
+                                                width="15"
+                                                value="70"
+                                                color="teal"
+                                                >
+                                                70%
+                                                </v-progress-circular>
+                                            </v-col>
+                                        </v-row>
+                                    </v-list-item-content>
+                                    </v-list-item>
+                                </v-sol>
                             </v-row>
-                        </v-list-item-content>
-                        </v-list-item>
+                        </v-card>
                     </v-col>
-                    <v-sol cols="12" sm="4" >
-                        <v-list-item>
-                        <v-list-item-content>
-                            <div style="text-align:right">Your Portfolio</div>
-                            <v-row>
-                            <v-col cols="12" sm="12">
-                                <v-progress-circular
-                                rotate="360"
-                                size="100"
-                                width="15"
-                                value="70"
-                                color="teal"
-                                >
-                                70%
-                                </v-progress-circular>
-                            </v-col>
-                           
-                            </v-row>
-                        </v-list-item-content>
-                        </v-list-item>
-                    </v-sol>
-                    </v-row>
-                </v-card>
-                </v-col>
-            </v-row>
+                </v-row>
             </v-container>
         </div>
   </v-main>
@@ -364,6 +249,14 @@ export default {
     
   name: 'Home',
   data: () => ({
+      cards: [
+            { title: 'All Candidate', total: '120', icon: 'mdi-account-multiple-outline',  },
+            { title: 'New Candidate', total: '40', icon: 'mdi-account',  },
+            { title: 'OnProgress', total: '25', icon: 'mdi-chart-line-variant',  },
+            { title: 'Pending', total: '47', icon: 'mdi-alert',  },
+            { title: 'Not Met', total: '15', icon: 'mdi-close-box',  },
+            { title: 'Completed', total: '92', icon: 'mdi-checkbox-outline',  },
+        ],
       chartData: [
         ['Year', 'Sales', 'Expenses', 'Profit'],
         ['2014', 1000, 400, 200],

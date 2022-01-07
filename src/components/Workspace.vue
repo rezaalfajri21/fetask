@@ -3,70 +3,79 @@
         <v-main>
             <v-container fluid>
                 <h1>Workspace</h1>
-                <v-dialog v-model="dialog">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                            class="ma-2"
-                            outlined
-                            color="indigo"
-                            v-bind="attrs"
-                            v-on="on"
-                        >
-                        <v-icon>mdi-briefcase-outline</v-icon>
-                            Create Workspace
-                        </v-btn>
-                    </template>
-                    <v-card>
-                        <v-card-title>
-                            <span class="text-h6">{{ formTitle }}</span>
-                        </v-card-title>
-
-                        <v-card-text>
-                            <v-container>
-                                <v-row>
-                                    <v-text-field
-                                        v-model="editedItem.title"
-                                        label="Company Name"
-                                        outlined
-                                    ></v-text-field>
-                                        
-                                </v-row>
-                                <v-row>
-                                    <v-text-field
-                                        v-model="editedItem.maxaccount"
-                                        label="Max Account"
-                                        outlined
-                                    ></v-text-field>
-                                </v-row>
-                                <v-row>
-                                    <v-text-field
-                                        v-model="editedItem.maxassesment"
-                                        label="Max Assesment"
-                                        outlined
-                                    ></v-text-field>
-                                </v-row>
-                                        
-                            </v-container>
-                        </v-card-text>
-                        <v-card-actions>
-                            <v-spacer></v-spacer>
+                <v-row>
+                    <v-col style="text-align:right">
+                        <v-dialog v-model="dialog">
+                            <template v-slot:activator="{ on, attrs }" >
                                 <v-btn
-                                    color="blue darken-1"
-                                    text
-                                    @click="close()"
+                                    class="ma-2"
+                                    outlined
+                                    color="indigo"
+                                    v-bind="attrs"
+                                    v-on="on"
                                 >
-                                    Cancel
+                                <v-icon>mdi-briefcase-outline</v-icon>
+                                    Create Workspace
                                 </v-btn>
-                                <v-btn
-                                    color="blue darken-1"
-                                    text
-                                    @click="save()"
-                                    >
-                                        Save
-                                </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-dialog>
+                            </template>
+                            <v-card>
+                                <v-card-title>
+                                    <span class="text-h6">{{ formTitle }}</span>
+                                </v-card-title>
+
+                                <v-card-text>
+                                    <v-container>
+                                        <v-row>
+                                            <v-text-field
+                                                v-model="editedItem.title"
+                                                label="Company Name"
+                                                outlined
+                                            ></v-text-field>
+                                                
+                                        </v-row>
+                                        <v-row>
+                                            <v-text-field
+                                                v-model="editedItem.maxaccount"
+                                                label="Max Account"
+                                                outlined
+                                            ></v-text-field>
+                                        </v-row>
+                                        <v-row>
+                                            <v-text-field
+                                                v-model="editedItem.maxassesment"
+                                                label="Max Assesment"
+                                                outlined
+                                            ></v-text-field>
+                                        </v-row>
+                                                
+                                    </v-container>
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                        <v-btn
+                                            color="blue darken-1"
+                                            text
+                                            @click="close()"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            color="blue darken-1"
+                                            text
+                                            @click="save()"
+                                            >
+                                                Save
+                                        </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                        <!-- <ButtonMove></ButtonMove> -->
+                        <v-btn-toggle dense>
+                            <v-btn link tag="router-link" to="/account" >Account</v-btn>
+                            <v-btn color="indigo" >Workspace</v-btn>
+                        </v-btn-toggle>
+                    </v-col>
+                </v-row>
                 <v-dialog v-model="dialogDelete" max-width="500px">
                     <v-card>
                                     <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
@@ -78,8 +87,6 @@
                                     </v-card-actions>
                                 </v-card>
                 </v-dialog>
-                <br>
-                <br>
                 <v-row dense>
                     <v-col
                         class="col-md-3 col-sm-4"
@@ -95,8 +102,11 @@
                             >
                         
                             </v-img>
+                            <br>
                             <v-list-item-subtitle style="text-align:center" v-text="card.title"></v-list-item-subtitle>
+                            <br>
                             <v-divider></v-divider>
+                            <br>
                             <v-row>
                                 <v-col>
                                     <v-list-item-subtitle style="text-align:center">Max Account</v-list-item-subtitle>
@@ -135,7 +145,12 @@
 </template>
 
 <script>
+// import ButtonMove from './ButtonMove.vue'
     export default {
+    //     components: {
+    //   ButtonMove
+      
+    // },
         data: () => ({
             dialogDelete: false,
             editedIndex: -1,
@@ -156,10 +171,10 @@
         methods: {
             initialize(){
                 this.cards= [
-                    { title: 'Home', maxaccount: '35', maxassesment: '100', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', actions: 'actions', },
-                    { title: 'Road', maxaccount: '40', maxassesment: '90', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', actions: 'actions', },
-                    { title: 'Airlines', maxaccount: '55', maxassesment: '90', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', actions: 'actions', },
-                    { title: 'Airlines', maxaccount: '15', maxassesment: '80', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', actions: 'actions', },
+                    { title: 'Google Company', maxaccount: '35', maxassesment: '100', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', actions: 'actions', },
+                    { title: 'Netflix', maxaccount: '40', maxassesment: '90', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', actions: 'actions', },
+                    { title: 'Gojek', maxaccount: '55', maxassesment: '90', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', actions: 'actions', },
+                    { title: 'Paypal', maxaccount: '15', maxassesment: '80', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', actions: 'actions', },
                 ]
             },
             editItem (item) {

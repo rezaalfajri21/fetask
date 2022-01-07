@@ -3,6 +3,14 @@
         <v-main>
           <v-container fluid>
             <h1>Account Management</h1>
+            <v-row>
+              <v-col style="text-align:right">
+                <v-btn-toggle dense>
+                  <v-btn color="indigo">Account</v-btn>
+                  <v-btn link tag="router-link" to="/workspace">Workspace</v-btn>
+                </v-btn-toggle>
+              </v-col>
+            </v-row>
             <div class="projects mt-4">
                 <v-card max-width="1600" class="ml-9 mr-9 rounded-lg mb-9" elevation="0" outlined>
                     
@@ -48,6 +56,7 @@
                                 <v-btn-toggle
                                   v-model="sortDesc"
                                   mandatory
+                                  dense
                                 >
                                   <v-btn
                                     class="ma-2"

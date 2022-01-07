@@ -21,8 +21,8 @@
                             <br>
                             <v-list-item-icon left bottom style="max-width: 300px;">
                                 <v-icon @click="select()" >mdi-account</v-icon>
-                                <v-list-item-title @click="select()">Bayuna Rama</v-list-item-title>
-                                <v-icon @click="modalLogout=true" >mdi-chevron-down</v-icon>
+                                <v-list-item-title @click="select()">Bayuna Rama </v-list-item-title>
+                                <v-icon @click="modalLogout=true" >mdi-logout</v-icon>
                             </v-list-item-icon>   
                             
                        <v-dialog v-model="modalLogout" max-width="290">
