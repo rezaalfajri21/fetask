@@ -78,8 +78,6 @@
                             Candidate Overview 
                         </v-toolbar-title>
                         <v-spacer></v-spacer>
-                        <v-btn color="deep-purple" class="white--text mr-2">Weekly</v-btn>
-                        <v-btn color="deep-purple lighten-4" class="deep-purple--text ">Monthly</v-btn>
                         </v-app-bar>
                         <v-sparkline
                             :fill="fill"
